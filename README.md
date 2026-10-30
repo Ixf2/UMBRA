@@ -39,12 +39,8 @@ Las rutas activas son Inicio y Login. Se han preparado además Biblioteca, Inspi
 
 ## Rúbrica y seguimiento
 
-- [Relación con la rúbrica y guion de revisión](docs/RUBRICA.md)
-- [Comprobaciones realizadas y revisión pendiente](docs/VERIFICACION.md)
-- [Sprints, estados y tareas pendientes de GitHub](docs/SPRINTS.md)
 - [Repositorio](https://github.com/Ixf2/UMBRAJoanaRamirez)
-- Tablero de GitHub Projects o Trello: pendiente de crear o enlazar.
-- Acceso de la profesora: pendiente de verificar.
+- Tablero de GitHub Projects.
 
 Las imágenes son recursos generados para el proyecto; los prompts están en [public/images/ASSETS.md](public/images/ASSETS.md). Las licencias de las fuentes están en `public/fonts/`.
 
