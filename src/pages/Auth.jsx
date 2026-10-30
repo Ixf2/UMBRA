@@ -7,10 +7,10 @@ export default function Auth({ register = false }) {
   const fields = [
     ...(register ? [{ name: 'name', label: 'Nombre', required: true, minLength: 2, maxLength: 60, autoComplete: 'name' }] : []),
     email,
-    { name: 'password', label: 'Contraseña', type: 'password', required: true, minLength: register ? 8 : undefined, autoComplete: register ? 'new-password' : 'current-password', hint: register ? 'Al menos 8 caracteres. Usa una contraseña de prueba.' : 'Usa credenciales de prueba en esta demostración.' },
+    { name: 'password', label: 'Contraseña', type: 'password', required: true, minLength: register ? 8 : undefined, requireSpecial: register, autoComplete: register ? 'new-password' : 'current-password', hint: register ? 'Al menos 8 caracteres y un carácter especial, como !, @, # o $. Usa una contraseña de prueba.' : 'Usa credenciales de prueba en esta demostración.' },
     ...(register ? [
       { name: 'confirmPassword', label: 'Repetir contraseña', type: 'password', required: true, matches: 'password', autoComplete: 'new-password' },
-      { name: 'demoAcknowledged', label: 'Entiendo que este registro es una demostración y no crea una cuenta.', type: 'checkbox', required: true },
+      { name: 'demoAcknowledged', label: 'Entiendo que este registro es una demostración y no se guarda información personal.', type: 'checkbox', required: true },
     ] : []),
   ]
 

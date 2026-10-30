@@ -5,7 +5,7 @@ import './Login.css'
 
 const fields = [
   { name: 'email', label: 'Correo electrónico', type: 'email', required: true },
-  { name: 'password', label: 'Contraseña', required: true },
+  { name: 'password', label: 'Contraseña', type: 'password', required: true, minLength: 8, requireSpecial: true },
 ]
 
 export default function Login() {
@@ -24,7 +24,7 @@ export default function Login() {
       form.elements.namedItem(firstError).focus()
       return
     }
-    setMessage('El formulario es válido. El inicio de sesión estará disponible cuando se conecte la autenticación.')
+    setMessage('El formulario es válido.')
   }
 
   return <section className="login-page" aria-labelledby="login-title">
@@ -36,7 +36,7 @@ export default function Login() {
 
     <div className="login-divider" aria-hidden="true"><span>❖</span></div>
 
-    <p className="form-hint" id="login-demo-notice">Demostración: los campos con * son obligatorios. Usa datos de prueba; no se envían y todavía no se inicia sesión.</p>
+    <p className="form-hint" id="login-demo-notice">Demostración: los campos con * son obligatorios. Usa datos de prueba; se guarda en el storage.</p>
     <form className="login-form" noValidate aria-describedby="login-demo-notice" onSubmit={handleSubmit}>
       <div className="login-field">
         <label htmlFor="login-email">Correo electrónico *</label>
@@ -52,13 +52,14 @@ export default function Login() {
         <label htmlFor="login-password">Contraseña *</label>
         <div className="login-input">
           <Icon name="lock" size={18} />
-          <input id="login-password" name="password" type={showPassword ? 'text' : 'password'} autoComplete="current-password" required
-            placeholder="Introduce tu contraseña" aria-invalid={Boolean(errors.password)} aria-describedby={errors.password ? 'login-password-error' : undefined} />
+          <input id="login-password" name="password" type={showPassword ? 'text' : 'password'} autoComplete="current-password" required minLength={8}
+            placeholder="Introduce tu contraseña" aria-invalid={Boolean(errors.password)} aria-describedby={['login-password-hint', errors.password && 'login-password-error'].filter(Boolean).join(' ')} />
           <button type="button" className="login-password-toggle" aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
             aria-pressed={showPassword} onClick={() => setShowPassword(!showPassword)}>
             <Icon name={showPassword ? 'eye' : 'eye-off'} size={18} />
           </button>
         </div>
+        <p className="form-hint" id="login-password-hint">Al menos 8 caracteres y un carácter especial, como !, @, # o $.</p>
         {errors.password && <p className="field-error" id="login-password-error" role="alert">{errors.password}</p>}
       </div>
 

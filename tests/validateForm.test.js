@@ -22,14 +22,19 @@ test('el correo exige usuario, arroba y dominio', () => {
   assert.deepEqual(validateForm(fields, values({ email: 'elara@umbra.es' })), {})
 })
 
-test('el registro exige longitud suficiente y contraseñas iguales', () => {
+test('el registro exige longitud suficiente, un carácter especial y contraseñas iguales', () => {
   const fields = [
-    { name: 'password', required: true, minLength: 8 },
+    { name: 'password', required: true, minLength: 8, requireSpecial: true },
     { name: 'confirmPassword', required: true, matches: 'password' },
   ]
-  assert.ok(validateForm(fields, values({ password: 'corta', confirmPassword: 'corta' })).password)
-  assert.ok(validateForm(fields, values({ password: 'prueba123', confirmPassword: 'diferente' })).confirmPassword)
-  assert.deepEqual(validateForm(fields, values({ password: 'prueba123', confirmPassword: 'prueba123' })), {})
+  assert.ok(validateForm(fields, values({ password: 'corta!', confirmPassword: 'corta!' })).password)
+  for (const password of ['prueba123', 'prueba 123', 'contraseña123']) {
+    assert.ok(validateForm(fields, values({ password, confirmPassword: password })).password, password)
+  }
+  assert.ok(validateForm(fields, values({ password: 'prueba1!', confirmPassword: 'diferente' })).confirmPassword)
+  for (const password of ['prueba1!', 'prueba1@', 'prueba1#', 'prueba1$']) {
+    assert.deepEqual(validateForm(fields, values({ password, confirmPassword: password })), {})
+  }
 })
 
 test('el nivel debe ser entero y estar entre 1 y 20', () => {

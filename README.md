@@ -2,7 +2,7 @@
 
 Proyecto interdisciplinario con React, Vite y React Router. Preparación de la entrega de Inicio y navegación: portada en modo oscuro, interfaces, formularios de prueba, accesibilidad y mensajes al usuario.
 
-**Estado actual:** las últimas ediciones de `App.jsx` y del mapa de navegación dejan activas únicamente Inicio y Login. Las demás interfaces permanecen preparadas en sus archivos, pendientes de reconectar si forman parte del alcance de esta entrega. Consultar `docs/RUBRICA.md` antes de afirmar que está cubierta la rúbrica completa.
+**Estado actual:** las últimas ediciones de `App.jsx` y del mapa de navegación dejan activas únicamente Inicio y Login. Las demás interfaces permanecen preparadas en sus archivos, pendientes de reconectar si forman parte del alcance de esta entrega.
 
 ## Ejecutar
 
